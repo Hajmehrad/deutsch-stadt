@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+@layer base {
+  * {
+    @apply border-surface-border dark:border-surface-border-dark;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-paper text-ink font-body antialiased dark:bg-paper-dark dark:text-ink-dark;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+  ::selection {
+    @apply bg-signal-amber/40;
+  }
+  :focus-visible {
+    outline: 2px solid #1E4B8C;
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .signage-label {
+    @apply font-mono text-[11px] uppercase tracking-signage;
+  }
+  .glass {
+    @apply bg-white/70 backdrop-blur-md dark:bg-white/5;
+  }
+  .bg-grid {
+    background-image: radial-gradient(circle, rgba(23,26,30,0.06) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
